@@ -19,7 +19,7 @@ rc manifest.rc
 @REM Benefit: smaller exe size (179 KiB to 30 KiB)
 @REM See https://users.rust-lang.org/t/static-vcruntime-distribute-windows-msvc-binaries-without-needing-to-deploy-vcruntime-dll/57599
 @REM and https://www.google.com/search?q=%22%2FDEFAULTLIB%3Aucrt.lib%22+%22%2FNODEFAULTLIB%3Alibucrt.lib%22&newwindow=1
-cl /O2 /Ob2 /utf-8 xtract.c libarchive\lib\archive.lib /link setargv.obj manifest.res /DEFAULTLIB:ucrt.lib /NODEFAULTLIB:libucrt.lib /Brepro
+cl /O2 /Ob2 /utf-8 /Brepro xtract.c libarchive\lib\archive.lib /link setargv.obj manifest.res /DEFAULTLIB:ucrt.lib /NODEFAULTLIB:libucrt.lib /Brepro
 @REM mt -manifest manifest.xml -outputresource:xtract.exe;1
 @echo.
 @endlocal
