@@ -90,6 +90,8 @@ static void toggle_cp65001(void) {
         oldocp = GetConsoleOutputCP();
         SetConsoleCP(CP_UTF8);
         SetConsoleOutputCP(CP_UTF8);
+        printf("%u %u %u %u %u %u\n", GetACP(), GetOEMCP(),
+            oldicp, oldocp, GetConsoleCP(), GetConsoleOutputCP());
     } else {
         SetConsoleCP(oldicp);
         SetConsoleOutputCP(oldocp);
@@ -111,8 +113,6 @@ int main(int argc, char *argv[]) {
     toggle_cp65001();
     atexit(toggle_cp65001);
     SetConsoleCtrlHandler(ctrlhandler, TRUE);
-    printf("%u %u %u %u\n",
-           GetACP(), GetOEMCP(), GetConsoleCP(), GetConsoleOutputCP());
 #endif
     /* [Windows 10 22H2] MSVC v143 ucrt:    "Korean_Korea.utf8" */
     /* [Windows 10 22H2] MinGW-w64 msvcrt:  "Korean_Korea.949" */
