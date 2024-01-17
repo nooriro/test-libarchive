@@ -93,6 +93,8 @@ static void toggle_cp65001(void) {
         printf("%u %u %u %u %u %u\n", GetACP(), GetOEMCP(),
             oldicp, oldocp, GetConsoleCP(), GetConsoleOutputCP());
     } else {
+        fflush(stdout);
+        fflush(stderr);
         SetConsoleCP(oldicp);
         SetConsoleOutputCP(oldocp);
         oldocp = oldicp = 0;
